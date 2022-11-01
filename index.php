@@ -7,8 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Service</h1>
-    <form action=""><input type="text"></form>
-    <form action=""><input type="file" name="" id=""></form>
+    <?php echo "Git PHP" ?>
 </body>
 </html>
