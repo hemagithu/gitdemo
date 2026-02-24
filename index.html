@@ -4,9 +4,100 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Date Picker</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Datepicker CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/css/bootstrap-datepicker.min.css">
+    <style>
+        /*
+         * WAVE accessibility fix: Very low contrast
+         * Ensure all datepicker elements meet WCAG AA 4.5:1 contrast ratio.
+         */
+
+        /* Active / selected day: dark blue background (#0056b3) with white text — ratio 4.56:1 */
+        .datepicker table tr td.active,
+        .datepicker table tr td.active:hover,
+        .datepicker table tr td.active.disabled,
+        .datepicker table tr td.active.disabled:hover,
+        .datepicker table tr td span.active,
+        .datepicker table tr td span.active:hover {
+            background-color: #0056b3;
+            background-image: none;
+            color: #ffffff;
+        }
+
+        /* Today highlight: dark green (#155724) with white text — ratio 9.45:1 */
+        .datepicker table tr td.today,
+        .datepicker table tr td.today:hover,
+        .datepicker table tr td.today.disabled,
+        .datepicker table tr td.today.disabled:hover {
+            background-color: #155724;
+            background-image: none;
+            color: #ffffff;
+        }
+
+        /* Day-of-week header row: dark text on light background — ratio > 7:1 */
+        .datepicker table tr th {
+            color: #212529;
+        }
+
+        /* Disabled / old / new month days: dark gray (#595959) on white — ratio 7.0:1 */
+        .datepicker table tr td.old,
+        .datepicker table tr td.new,
+        .datepicker table tr td.disabled,
+        .datepicker table tr td.disabled:hover {
+            color: #595959;
+        }
+
+        /* Input placeholder: ensure sufficient contrast (#767676 on white = 4.54:1) */
+        .datepicker-input::placeholder {
+            color: #767676;
+        }
+
+        /* Focused input border to aid visual keyboard navigation */
+        .datepicker-input:focus {
+            border-color: #0056b3;
+            box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.25);
+            outline: 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>changess</h1>
+    <div class="container mt-5">
+        <h1>Date Picker</h1>
+        <div class="form-group">
+            <!-- Explicit <label> associates text with the input — required for WAVE "Missing form label" rule -->
+            <label for="selectedStartDate">Start Date</label>
+            <input
+                type="text"
+                class="form-control datepicker-input"
+                id="selectedStartDate"
+                name="selectedStartDate"
+                placeholder="MM/DD/YYYY"
+                autocomplete="off"
+                aria-label="Start Date"
+            >
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(function () {
+            var d = new Date();
+
+            $("#selectedStartDate").datepicker({
+                format: 'mm/dd/yyyy',
+                startDate: d,
+                todayHighlight: true,
+                autoclose: true
+            });
+        });
+    </script>
 </body>
 </html>
